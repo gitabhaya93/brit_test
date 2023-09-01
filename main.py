@@ -4,8 +4,6 @@ from item import router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-app.include_router(router, prefix="/items")
-
 origins = [
     "https://thankful-river-01992e00f.3.azurestaticapps.net/"
 ]
@@ -16,5 +14,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(router, prefix="/items")
 #create all tables
 Base.metadata.create_all(bind=engine)
